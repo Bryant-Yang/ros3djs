@@ -38081,7 +38081,7 @@ Object.assign( Font.prototype, {
 								laste.x;
 								laste.y;
 
-								
+
 
 							}
 
@@ -38105,7 +38105,7 @@ Object.assign( Font.prototype, {
 								laste.x;
 								laste.y;
 
-								
+
 
 							}
 
@@ -54889,7 +54889,7 @@ eventemitter2.exports;
 	    // CommonJS
 	    module.exports = EventEmitter;
 	  }
-	}(); 
+	}();
 } (eventemitter2, eventemitter2.exports));
 
 var eventemitter2Exports = eventemitter2.exports;
@@ -57425,7 +57425,7 @@ var LaserScan = /*@__PURE__*/(function (superclass) {
 
 var NavSatFix = /*@__PURE__*/(function (superclass) {
   function NavSatFix(options) {
-  
+
     superclass.call(this);
     options = options || {};
     this.ros = options.ros;
@@ -58257,7 +58257,7 @@ var OrbitControls = /*@__PURE__*/(function (superclass) {
           state = STATE.ROTATE;
           rotateStart.set(event.clientX, event.clientY);
           break;
-        case 1:
+        case 2:
           state = STATE.MOVE;
 
           moveStartNormal = new THREE.Vector3(0, 0, 1);
@@ -58270,7 +58270,7 @@ var OrbitControls = /*@__PURE__*/(function (superclass) {
                                                      moveStartCenter,
                                                      moveStartNormal);
           break;
-        case 2:
+        case 1:
           state = STATE.ZOOM;
           zoomStart.set(event.clientX, event.clientY);
           break;

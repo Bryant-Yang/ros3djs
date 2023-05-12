@@ -38073,7 +38073,7 @@ var ROS3D = (function (exports, ROSLIB) {
 									laste.x;
 									laste.y;
 
-									
+
 
 								}
 
@@ -38097,7 +38097,7 @@ var ROS3D = (function (exports, ROSLIB) {
 									laste.x;
 									laste.y;
 
-									
+
 
 								}
 
@@ -54951,7 +54951,7 @@ var ROS3D = (function (exports, ROSLIB) {
 		    // CommonJS
 		    module.exports = EventEmitter;
 		  }
-		}(); 
+		}();
 	} (eventemitter2, eventemitter2.exports));
 
 	var eventemitter2Exports = eventemitter2.exports;
@@ -56147,7 +56147,7 @@ var ROS3D = (function (exports, ROSLIB) {
 	  /**
 	   * Base node type that represents one voxel as a node of the tree
 	   */
-	  
+
 	  constructor() {
 	    this._children = [null, null, null, null, null, null, null, null];
 	    this.value = null;
@@ -56759,7 +56759,7 @@ var ROS3D = (function (exports, ROSLIB) {
 	   *    * palette (optional) - Palette used for false-coloring (default: predefined palette)
 	   *    * paletteSclae (optional) - Scale of palette to represent a wider range of values (default: 1.)
 	   */
-	  
+
 	  constructor(options) {
 	    super(options);
 
@@ -56821,7 +56821,7 @@ var ROS3D = (function (exports, ROSLIB) {
 	   * @fileOverview
 	   * @author Peter Sari - sari@photoneo.com
 	   */
-	  
+
 	  constructor(options) {
 	    super(options);
 	    this.useOwnColor = (typeof options.palette !== 'undefined') && options.colorMode === OcTreeColorMode.COLOR;
@@ -56876,7 +56876,7 @@ var ROS3D = (function (exports, ROSLIB) {
 	   *    * voxelRenderMode (optional)- toggle between rendering modes @see ROS3D.OcTreeVoxelRenderMode. (default `occupid`)
 	   *
 	   */
-	  
+
 	  constructor(options) {
 	    super();
 	    options = options || {};
@@ -57841,9 +57841,9 @@ var ROS3D = (function (exports, ROSLIB) {
 	   *  * keep (optional) - number of gps fix points to keep (default: 100)
 	   *  * convert (optional) - conversion function from lon/lat/alt to THREE.Vector3 (default: passthrough)
 	   */
-	  
+
 	  constructor(options) {
-	  
+
 	    super();
 	    options = options || {};
 	    this.ros = options.ros;
@@ -58775,7 +58775,7 @@ var ROS3D = (function (exports, ROSLIB) {
 	          state = STATE.ROTATE;
 	          rotateStart.set(event.clientX, event.clientY);
 	          break;
-	        case 1:
+	        case 2:
 	          state = STATE.MOVE;
 
 	          moveStartNormal = new THREE.Vector3(0, 0, 1);
@@ -58788,7 +58788,7 @@ var ROS3D = (function (exports, ROSLIB) {
 	                                                     moveStartCenter,
 	                                                     moveStartNormal);
 	          break;
-	        case 2:
+	        case 1:
 	          state = STATE.ZOOM;
 	          zoomStart.set(event.clientX, event.clientY);
 	          break;
