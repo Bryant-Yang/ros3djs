@@ -17111,7 +17111,7 @@ var ROS3D = (function (exports, ROSLIB) {
 
 			get: function ( light ) {
 
-				if ( lights[ light.id ] !== undefined ) {
+				if ( lights[ light.id ] !== undefined && lights[ light.id ].position) {
 
 					return lights[ light.id ];
 
