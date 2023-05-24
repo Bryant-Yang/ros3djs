@@ -17095,7 +17095,7 @@ function UniformsCache() {
 
 		get: function ( light ) {
 
-			if ( lights[ light.id ] !== undefined && lights[ light.id ].position ) {
+			if ( lights[ light.id ] !== undefined && (lights[ light.id ].position || lights[ light.id ].direction) ) {
 
 				return lights[ light.id ];
 
