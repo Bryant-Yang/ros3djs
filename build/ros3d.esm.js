@@ -17089,108 +17089,94 @@ function WebGLGeometries( gl, attributes, infoMemory ) {
 
 function UniformsCache() {
 
-    var lights = {};
+	var lights = {};
 
-    return {
+	return {
 
-        get: function ( light ) {
+		get: function ( light ) {
 
-            var uniforms;
+			if ( lights[ light.id ] !== undefined && (lights[ light.id ].position || lights[ light.id ].direction) ) {
 
-            switch ( light.type ) {
+				return lights[ light.id ];
 
-                case 'DirectionalLight':
-                    if ( lights[ light.id ] !== undefined && lights[ light.id ].direction ) {
-                        return lights[ light.id ];
-                    }
+			}
 
-                    uniforms = {
-                        direction: new Vector3(),
-                        color: new Color(),
+			var uniforms;
 
-                        shadow: false,
-                        shadowBias: 0,
-                        shadowRadius: 1,
-                        shadowMapSize: new Vector2()
-                    };
-                    break;
+			switch ( light.type ) {
 
-                case 'SpotLight':
-                    if ( lights[ light.id ] !== undefined && (lights[ light.id ].position || lights[ light.id ].direction) ) {
-                        return lights[ light.id ];
-                    }
+				case 'DirectionalLight':
+					uniforms = {
+						direction: new Vector3(),
+						color: new Color(),
 
-                    uniforms = {
-                        position: new Vector3(),
-                        direction: new Vector3(),
-                        color: new Color(),
-                        distance: 0,
-                        coneCos: 0,
-                        penumbraCos: 0,
-                        decay: 0,
+						shadow: false,
+						shadowBias: 0,
+						shadowRadius: 1,
+						shadowMapSize: new Vector2()
+					};
+					break;
 
-                        shadow: false,
-                        shadowBias: 0,
-                        shadowRadius: 1,
-                        shadowMapSize: new Vector2()
-                    };
-                    break;
+				case 'SpotLight':
+					uniforms = {
+						position: new Vector3(),
+						direction: new Vector3(),
+						color: new Color(),
+						distance: 0,
+						coneCos: 0,
+						penumbraCos: 0,
+						decay: 0,
 
-                case 'PointLight':
-                    if ( lights[ light.id ] !== undefined && lights[ light.id ].position ) {
-                        return lights[ light.id ];
-                    }
+						shadow: false,
+						shadowBias: 0,
+						shadowRadius: 1,
+						shadowMapSize: new Vector2()
+					};
+					break;
 
-                    uniforms = {
-                        position: new Vector3(),
-                        color: new Color(),
-                        distance: 0,
-                        decay: 0,
+				case 'PointLight':
+					uniforms = {
+						position: new Vector3(),
+						color: new Color(),
+						distance: 0,
+						decay: 0,
 
-                        shadow: false,
-                        shadowBias: 0,
-                        shadowRadius: 1,
-                        shadowMapSize: new Vector2(),
-                        shadowCameraNear: 1,
-                        shadowCameraFar: 1000
-                    };
-                    break;
+						shadow: false,
+						shadowBias: 0,
+						shadowRadius: 1,
+						shadowMapSize: new Vector2(),
+						shadowCameraNear: 1,
+						shadowCameraFar: 1000
+					};
+					break;
 
-                case 'HemisphereLight':
-                    if ( lights[ light.id ] !== undefined && lights[ light.id ].direction ) {
-                        return lights[ light.id ];
-                    }
+				case 'HemisphereLight':
+					uniforms = {
+						direction: new Vector3(),
+						skyColor: new Color(),
+						groundColor: new Color()
+					};
+					break;
 
-                    uniforms = {
-                        direction: new Vector3(),
-                        skyColor: new Color(),
-                        groundColor: new Color()
-                    };
-                    break;
+				case 'RectAreaLight':
+					uniforms = {
+						color: new Color(),
+						position: new Vector3(),
+						halfWidth: new Vector3(),
+						halfHeight: new Vector3()
+						// TODO (abelnation): set RectAreaLight shadow uniforms
+					};
+					break;
 
-                case 'RectAreaLight':
-                    if ( lights[ light.id ] !== undefined && lights[ light.id ].position ) {
-                        return lights[ light.id ];
-                    }
+			}
 
-                    uniforms = {
-                        color: new Color(),
-                        position: new Vector3(),
-                        halfWidth: new Vector3(),
-                        halfHeight: new Vector3()
-                        // TODO (abelnation): set RectAreaLight shadow uniforms
-                    };
-                    break;
+			lights[ light.id ] = uniforms;
 
-            }
+			return uniforms;
 
-            lights[ light.id ] = uniforms;
+		}
 
-            return uniforms;
-
-        }
-
-    };
+	};
 
 }
 

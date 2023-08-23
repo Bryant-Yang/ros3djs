@@ -17111,16 +17111,18 @@ var ROS3D = (function (exports, ROSLIB) {
 
 			get: function ( light ) {
 
+				if ( lights[ light.id ] !== undefined && (lights[ light.id ].position || lights[ light.id ].direction) ) {
+
+					return lights[ light.id ];
+
+				}
+
 				var uniforms;
 
 				switch ( light.type ) {
 
 					case 'DirectionalLight':
-                        if ( lights[ light.id ] !== undefined && lights[ light.id ].direction ) {
-                            return lights[ light.id ];
-                        }
-
-                        uniforms = {
+						uniforms = {
 							direction: new Vector3(),
 							color: new Color(),
 
@@ -17132,11 +17134,7 @@ var ROS3D = (function (exports, ROSLIB) {
 						break;
 
 					case 'SpotLight':
-                        if ( lights[ light.id ] !== undefined && (lights[ light.id ].position || lights[ light.id ].direction) ) {
-                            return lights[ light.id ];
-                        }
-
-                        uniforms = {
+						uniforms = {
 							position: new Vector3(),
 							direction: new Vector3(),
 							color: new Color(),
@@ -17153,11 +17151,7 @@ var ROS3D = (function (exports, ROSLIB) {
 						break;
 
 					case 'PointLight':
-                        if ( lights[ light.id ] !== undefined && lights[ light.id ].position ) {
-                            return lights[ light.id ];
-                        }
-
-                        uniforms = {
+						uniforms = {
 							position: new Vector3(),
 							color: new Color(),
 							distance: 0,
@@ -17173,11 +17167,7 @@ var ROS3D = (function (exports, ROSLIB) {
 						break;
 
 					case 'HemisphereLight':
-                        if ( lights[ light.id ] !== undefined && lights[ light.id ].direction ) {
-                            return lights[ light.id ];
-                        }
-
-                        uniforms = {
+						uniforms = {
 							direction: new Vector3(),
 							skyColor: new Color(),
 							groundColor: new Color()
@@ -17185,11 +17175,7 @@ var ROS3D = (function (exports, ROSLIB) {
 						break;
 
 					case 'RectAreaLight':
-                        if ( lights[ light.id ] !== undefined && lights[ light.id ].position ) {
-                            return lights[ light.id ];
-                        }
-
-                        uniforms = {
+						uniforms = {
 							color: new Color(),
 							position: new Vector3(),
 							halfWidth: new Vector3(),
